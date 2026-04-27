@@ -16,7 +16,8 @@ import {
   Briefcase,
   Repeat,
   Plus,
-  Minus
+  Minus,
+  Home
 } from 'lucide-react';
 
 function App() {
@@ -38,10 +39,12 @@ function App() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    if (name === 'category') setOpenFaq(0);
   };
 
   const handleCategorySelect = (category) => {
     setFormData(prev => ({ ...prev, category }));
+    setOpenFaq(0);
     // Smooth scroll to the form
     const formElement = document.getElementById('booking-form');
     if (formElement) {
@@ -124,33 +127,79 @@ Please share availability and details.`;
     }
   ];
 
-  const faqs = [
-    {
-      question: 'What is included in deluxe houseboat booking in Alleppey?',
-      answer: (
-        <>
-          Deluxe houseboat booking includes:
-          <ul style={{ paddingLeft: '1.2rem', marginTop: '0.5rem', listStyleType: 'disc' }}>
-            <li>AC accommodation with comfortable beds</li>
-            <li>All meals (breakfast, lunch, dinner, tea/snacks)</li>
-            <li>Professional crew (captain, chef, helper)</li>
-            <li>Full-day backwater cruise</li>
-            <li>Village visits and cultural activities</li>
-            <li>Safety equipment (life jackets, first aid)</li>
-            <li>WiFi and basic amenities</li>
-            <li>Traditional welcome and departure</li>
-          </ul>
-        </>
-      )
-    },
-    { question: 'What are the available options for deluxe houseboat in Alleppey?', answer: 'We offer 1-bedroom to 6-bedroom deluxe houseboats suitable for couples, families, and large groups. You can choose between private and sharing options.' },
-    { question: 'How to book deluxe houseboat in Alleppey?', answer: 'You can book easily by filling out the form on this page, or by contacting us directly via WhatsApp or phone. We require a small advance payment to confirm the booking.' },
-    { question: 'Is deluxe houseboat suitable for families with children?', answer: 'Yes, absolutely! Our houseboats are very safe for families and children. We provide safety precautions and life jackets. The crew is always there to assist.' },
-    { question: 'What is the best time to book deluxe houseboat in Alleppey?', answer: 'The best time is from September to March when the weather is pleasant. However, backwater cruising is available year-round.' },
-    { question: 'What amenities are provided in deluxe houseboats?', answer: 'Amenities include air-conditioned bedrooms, attached bathrooms, a viewing deck, a dining area, a television, and a music system.' },
-    { question: 'Can I customize my deluxe houseboat itinerary?', answer: 'Yes, we can customize your itinerary based on your preferences. You can choose specific routes or request special arrangements like a candlelight dinner.' },
-    { question: 'What is the cancellation policy for deluxe houseboat booking?', answer: 'Cancellations made 15 days prior to the journey receive a full refund (minus processing fees). Cancellations within 15 days may incur charges. Please refer to our detailed policy.' }
-  ];
+  const faqData = {
+    'Deluxe Houseboat': [
+      {
+        question: 'What is included in deluxe houseboat booking in Alleppey?',
+        answer: (
+          <>
+            Deluxe houseboat booking includes:
+            <ul style={{ paddingLeft: '1.2rem', marginTop: '0.5rem', listStyleType: 'disc' }}>
+              <li>AC accommodation with comfortable beds</li>
+              <li>All meals (breakfast, lunch, dinner, tea/snacks)</li>
+              <li>Professional crew (captain, chef, helper)</li>
+              <li>Full-day backwater cruise</li>
+              <li>Village visits and cultural activities</li>
+              <li>Safety equipment (life jackets, first aid)</li>
+              <li>WiFi and basic amenities</li>
+              <li>Traditional welcome and departure</li>
+            </ul>
+          </>
+        )
+      },
+      { question: 'What are the available options for deluxe houseboat in Alleppey?', answer: 'We offer 1-bedroom to 6-bedroom deluxe houseboats suitable for couples, families, and large groups. You can choose between private and sharing options.' },
+      { question: 'How to book deluxe houseboat in Alleppey?', answer: 'You can book easily by filling out the form on this page, or by contacting us directly via WhatsApp or phone. We require a small advance payment to confirm the booking.' },
+      { question: 'Is deluxe houseboat suitable for families with children?', answer: 'Yes, absolutely! Our houseboats are very safe for families and children. We provide safety precautions and life jackets. The crew is always there to assist.' },
+      { question: 'What is the best time to book deluxe houseboat in Alleppey?', answer: 'The best time is from September to March when the weather is pleasant. However, backwater cruising is available year-round.' },
+      { question: 'What amenities are provided in deluxe houseboats?', answer: 'Amenities include air-conditioned bedrooms, attached bathrooms, a viewing deck, a dining area, a television, and a music system.' },
+      { question: 'Can I customize my deluxe houseboat itinerary?', answer: 'Yes, we can customize your itinerary based on your preferences. You can choose specific routes or request special arrangements like a candlelight dinner.' },
+      { question: 'What is the cancellation policy for deluxe houseboat booking?', answer: 'Cancellations made 15 days prior to the journey receive a full refund (minus processing fees). Cancellations within 15 days may incur charges. Please refer to our detailed policy.' }
+    ],
+    'Premium Houseboat': [
+      {
+        question: 'What is included in a premium houseboat booking?',
+        answer: (
+          <>
+            Premium houseboat booking includes all standard features plus:
+            <ul style={{ paddingLeft: '1.2rem', marginTop: '0.5rem', listStyleType: 'disc' }}>
+              <li>Full-time AC in bedrooms (not just at night)</li>
+              <li>Premium menu with extra non-veg options and fruit basket</li>
+              <li>Glass-covered dining and living area</li>
+              <li>Upgraded toiletries and premium linen</li>
+              <li>More spacious bedrooms with better views</li>
+            </ul>
+          </>
+        )
+      },
+      { question: 'What is the difference between deluxe and premium houseboats?', answer: 'The main difference is the AC usage and the interiors. Premium houseboats provide full-time AC, while deluxe usually provides AC only from 9 PM to 6 AM. Premium boats also feature glass windows in the living area and upgraded food options.' },
+      { question: 'Is the premium houseboat completely private?', answer: 'Yes, if you book the entire boat, it is completely private for your group along with the 3 crew members.' },
+      { question: 'What kind of food is served on a premium houseboat?', answer: 'We serve traditional Kerala cuisine. The premium menu includes welcome drinks, elaborate lunch with fish fry, evening tea/snacks, and a dinner featuring chicken or other special dishes. We also accommodate dietary restrictions if informed in advance.' },
+      { question: 'Are there any extra activities included?', answer: 'Yes, premium bookings often include a complimentary canoe ride or village walk, allowing you to explore the narrower canals that the houseboat cannot enter.' }
+    ],
+    'Luxury Houseboat': [
+      {
+        question: 'What defines the luxury houseboat experience?',
+        answer: (
+          <>
+            Our luxury houseboats offer a 5-star experience on water, including:
+            <ul style={{ paddingLeft: '1.2rem', marginTop: '0.5rem', listStyleType: 'disc' }}>
+              <li>Fully glass-covered upper deck with 360-degree views</li>
+              <li>Centralized AC throughout the boat</li>
+              <li>Luxurious bedrooms with en-suite jacuzzis or premium bathtubs</li>
+              <li>Customized fine-dining menu prepared by a private chef</li>
+              <li>Premium entertainment systems and unlimited WiFi</li>
+            </ul>
+          </>
+        )
+      },
+      { question: 'Can we customize the menu on a luxury houseboat?', answer: 'Absolutely. A dedicated chef will prepare meals according to your exact preferences, whether you prefer continental, North Indian, or authentic Kerala delicacies with premium seafood like tiger prawns or pearl spot.' },
+      { question: 'Is the luxury houseboat suitable for corporate events or small parties?', answer: 'Yes, our luxury houseboats have spacious upper decks that are perfect for corporate meetings, honeymoons, anniversaries, and intimate parties. We can arrange special decorations and cakes upon request.' },
+      { question: 'What are the check-in and check-out timings for luxury boats?', answer: 'Check-in is typically at 12:00 PM and check-out at 9:00 AM the next day. We ensure a seamless, priority boarding process for our luxury guests.' },
+      { question: 'Do luxury houseboats have safety certifications?', answer: 'Yes, all our luxury houseboats hold premium safety certifications, are equipped with modern navigation and safety gear, and are operated by highly experienced, bilingual crew members.' }
+    ]
+  };
+
+  const currentFaqs = faqData[formData.category] || faqData['Deluxe Houseboat'];
 
   return (
     <div style={themeStyles}>
@@ -341,6 +390,26 @@ Please share availability and details.`;
                       </div>
                     </div>
 
+                    <div className="form-group">
+                      <label className="form-label">Select Houseboat Category</label>
+                      <div className="input-with-icon">
+                        <Home size={18} className="input-icon" style={{ backgroundColor: '#fef3c7', color: '#d97706', padding: '4px', borderRadius: '4px', width: '28px', height: '28px', boxSizing: 'border-box' }} />
+                        <select 
+                          name="category" 
+                          className="form-input"
+                          style={{paddingLeft: '3.5rem'}}
+                          value={formData.category}
+                          onChange={handleChange}
+                          required
+                        >
+                          <option value="" disabled>Select a category</option>
+                          <option value="Deluxe Houseboat">Deluxe Houseboat</option>
+                          <option value="Premium Houseboat">Premium Houseboat</option>
+                          <option value="Luxury Houseboat">Luxury Houseboat</option>
+                        </select>
+                      </div>
+                    </div>
+
                     <button type="submit" className="submit-btn">
                       Check Availability
                     </button>
@@ -399,12 +468,12 @@ Please share availability and details.`;
         <section className="faq-section">
           <div className="faq-header">
             <h3 className="faq-cursive">Frequently Asked Questions</h3>
-            <h2 className="faq-title">Deluxe Houseboat Booking</h2>
-            <p className="faq-subtitle">Get answers to common questions about deluxe houseboat booking in Alleppey, Kerala.</p>
+            <h2 className="faq-title">{formData.category || 'Deluxe Houseboat'} Booking</h2>
+            <p className="faq-subtitle">Get answers to common questions about {formData.category ? formData.category.toLowerCase() : 'deluxe houseboat'} booking in Alleppey, Kerala.</p>
           </div>
           
           <div className="faq-list">
-            {faqs.map((faq, index) => (
+            {currentFaqs.map((faq, index) => (
               <div key={index} className={`faq-item ${openFaq === index ? 'open' : ''}`}>
                 <button 
                   className="faq-question" 
