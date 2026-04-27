@@ -24,7 +24,7 @@ function App() {
     date: '',
     adults: '2',
     children: '0',
-    category: 'Deluxe Houseboat'
+    category: ''
   });
 
   const handleChange = (e) => {
@@ -59,7 +59,7 @@ function App() {
 
 👤 Name: ${formData.name}
 📞 WhatsApp: +91${formData.whatsapp}
-🛥️ Category: ${formData.category || 'Deluxe Houseboat'}
+🛥️ Category: ${formData.category || 'Not selected yet'}
 📅 Travel Date: ${formattedDate}
 👨‍👩‍👧‍👦 Adults: ${formData.adults}
 🧒 Children: ${formData.children}
@@ -75,15 +75,18 @@ Please share availability and details.`;
   };
 
   const themeColors = {
-    'Deluxe Houseboat': { main: '#3b48ff', hover: '#323ee6' },
-    'Premium Houseboat': { main: '#059669', hover: '#047857' },
-    'Luxury Houseboat': { main: '#d97706', hover: '#b45309' }
+    '': { main: '#3b48ff', hover: '#323ee6', heroBg: 'rgba(0,0,0,0.4)', blendMode: 'overlay' },
+    'Deluxe Houseboat': { main: '#3b48ff', hover: '#323ee6', heroBg: '#3b48ff', blendMode: 'multiply' },
+    'Premium Houseboat': { main: '#059669', hover: '#047857', heroBg: '#059669', blendMode: 'multiply' },
+    'Luxury Houseboat': { main: '#d97706', hover: '#b45309', heroBg: '#d97706', blendMode: 'multiply' }
   };
 
-  const currentTheme = themeColors[formData.category] || themeColors['Deluxe Houseboat'];
+  const currentTheme = themeColors[formData.category] || themeColors[''];
   const themeStyles = {
     '--primary': currentTheme.main,
     '--primary-hover': currentTheme.hover,
+    '--hero-bg-color': currentTheme.heroBg,
+    '--hero-blend-mode': currentTheme.blendMode,
   };
 
   const reviews = [
@@ -182,14 +185,14 @@ Please share availability and details.`;
             {/* Left Column */}
             <div className="hero-content">
               <div className="breadcrumbs">
-                Home &gt; Houseboat Booking &gt; <strong>{formData.category}s</strong>
+                Home &gt; Houseboat Booking {formData.category ? `> ` : ''}<strong>{formData.category ? `${formData.category}s` : ''}</strong>
               </div>
               
               <div className="badge-outline">
-                <Globe size={14} /> {formData.category.split(' ')[0]} Category
+                <Globe size={14} /> {formData.category ? `${formData.category.split(' ')[0]} Category` : 'All Categories'}
               </div>
               
-              <h2 className="hero-cursive">{formData.category}s</h2>
+              <h2 className="hero-cursive">{formData.category ? `${formData.category}s` : 'Alleppey Houseboats'}</h2>
               <h1 className="hero-title">Alleppey Backwater<br/>Experience</h1>
             </div>
 

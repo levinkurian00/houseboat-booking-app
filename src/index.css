@@ -272,11 +272,11 @@ body {
 
 /* Hero Section */
 .hero-section {
-  background-color: var(--primary);
+  background-color: var(--hero-bg-color, var(--primary));
   background-image: url('/hero-image.png');
   background-size: cover;
   background-position: center;
-  background-blend-mode: multiply;
+  background-blend-mode: var(--hero-blend-mode, multiply);
   min-height: 80vh;
   position: relative;
   overflow: hidden;
