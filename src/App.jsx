@@ -100,32 +100,7 @@ Please share availability and details.`;
     '--hero-blend-mode': currentTheme.blendMode,
   };
 
-  const reviews = [
-    {
-      initials: 'R', name: 'Rajesh & Family', meta: 'Mumbai • Stayed Dec 2024', theme: 'theme-blue', badge: 'Verified Stay', badgeIcon: <CheckCircle2 size={14} />,
-      text: '"Perfect deluxe houseboat experience! The AC rooms were comfortable, food was amazing, and the crew was very professional. Kids loved the village visit. Highly recommend for families!"'
-    },
-    {
-      initials: 'A', name: 'Arjun & Priya', meta: 'Bangalore • Honeymoon Trip', theme: 'theme-green', badge: 'Honeymoon Special', badgeIcon: <Heart size={14} />,
-      text: '"Romantic and peaceful! The deluxe houseboat exceeded our expectations. Beautiful sunset views, delicious Kerala cuisine, and excellent service. Perfect for our honeymoon!"'
-    },
-    {
-      initials: 'S', name: 'Sarah Johnson', meta: 'UK Tourist • Group of 4', theme: 'theme-orange', badge: 'International Guest', badgeIcon: <Globe size={14} />,
-      text: '"Absolutely magical experience! The backwaters of Kerala are stunning. Our deluxe houseboat was clean, comfortable, and the crew was incredibly helpful. Best part of our India trip!"'
-    },
-    {
-      initials: 'M', name: 'Meera & Group', meta: 'Chennai • Corporate Retreat', theme: 'theme-purple', badge: 'Corporate Booking', badgeIcon: <Briefcase size={14} />,
-      text: '"Excellent experience! The deluxe category offers wonderful amenities and great service. Perfect for our team outing. Booking process was smooth and hassle-free."'
-    },
-    {
-      initials: 'K', name: 'Kumar Family', meta: 'Delhi • Weekend Getaway', theme: 'theme-teal', badge: 'Repeat Customer', badgeIcon: <Repeat size={14} />,
-      text: '"Wonderful weekend escape from city life! The traditional Kerala meals were outstanding, and the crew made sure we had everything we needed. Will definitely book again!"'
-    },
-    {
-      initials: 'V', name: 'Vikram & Parents', meta: 'Pune • Family Vacation', theme: 'theme-amber', badge: 'Senior Friendly', badgeIcon: <User size={14} />,
-      text: '"Took my elderly parents on this trip and they absolutely loved it! The boat was comfortable, crew was respectful, and the slow pace was perfect for relaxation. Highly recommended for senior citizens."'
-    }
-  ];
+  // Removed static reviews array since we are using Elfsight now
 
   const faqData = {
     'Deluxe Houseboat': [
@@ -421,47 +396,8 @@ Please share availability and details.`;
         </section>
 
         {/* Reviews Section */}
-        <section className="reviews-section">
-          <div className="reviews-header">
-            <div className="stars">
-              <Star fill="currentColor" size={24} />
-              <Star fill="currentColor" size={24} />
-              <Star fill="currentColor" size={24} />
-              <Star fill="currentColor" size={24} />
-              <Star fill="currentColor" size={24} />
-            </div>
-            <strong>4.8</strong> out of 5 &nbsp;|&nbsp; <strong>500+</strong> verified reviews
-          </div>
-
-          <div className="reviews-grid">
-            {reviews.map((review, idx) => (
-              <div key={idx} className={`review-card ${review.theme}`}>
-                <div className="reviewer-info">
-                  <div className="reviewer-avatar">
-                    {review.initials}
-                  </div>
-                  <div className="reviewer-details">
-                    <h4>{review.name}</h4>
-                    <p>{review.meta}</p>
-                  </div>
-                </div>
-                
-                <div className="review-stars">
-                  <Star fill="currentColor" size={14} />
-                  <Star fill="currentColor" size={14} />
-                  <Star fill="currentColor" size={14} />
-                  <Star fill="currentColor" size={14} />
-                  <Star fill="currentColor" size={14} />
-                </div>
-                
-                <p className="review-text">{review.text}</p>
-                
-                <div className="review-badge">
-                  {review.badgeIcon} {review.badge}
-                </div>
-              </div>
-            ))}
-          </div>
+        <section className="reviews-section" style={{ minHeight: '500px' }}>
+          <div className="elfsight-app-88b398f6-613d-4ac2-821e-06e6df158390" data-elfsight-app-lazy="true"></div>
         </section>
 
         {/* FAQ Section */}
