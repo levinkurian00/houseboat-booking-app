@@ -14,7 +14,9 @@ import {
   Globe,
   Heart,
   Briefcase,
-  Repeat
+  Repeat,
+  Plus,
+  Minus
 } from 'lucide-react';
 
 function App() {
@@ -26,6 +28,12 @@ function App() {
     children: '0',
     category: ''
   });
+
+  const [openFaq, setOpenFaq] = useState(0);
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -114,6 +122,34 @@ Please share availability and details.`;
       initials: 'V', name: 'Vikram & Parents', meta: 'Pune • Family Vacation', theme: 'theme-amber', badge: 'Senior Friendly', badgeIcon: <User size={14} />,
       text: '"Took my elderly parents on this trip and they absolutely loved it! The boat was comfortable, crew was respectful, and the slow pace was perfect for relaxation. Highly recommended for senior citizens."'
     }
+  ];
+
+  const faqs = [
+    {
+      question: 'What is included in deluxe houseboat booking in Alleppey?',
+      answer: (
+        <>
+          Deluxe houseboat booking includes:
+          <ul style={{ paddingLeft: '1.2rem', marginTop: '0.5rem', listStyleType: 'disc' }}>
+            <li>AC accommodation with comfortable beds</li>
+            <li>All meals (breakfast, lunch, dinner, tea/snacks)</li>
+            <li>Professional crew (captain, chef, helper)</li>
+            <li>Full-day backwater cruise</li>
+            <li>Village visits and cultural activities</li>
+            <li>Safety equipment (life jackets, first aid)</li>
+            <li>WiFi and basic amenities</li>
+            <li>Traditional welcome and departure</li>
+          </ul>
+        </>
+      )
+    },
+    { question: 'What are the available options for deluxe houseboat in Alleppey?', answer: 'We offer 1-bedroom to 6-bedroom deluxe houseboats suitable for couples, families, and large groups. You can choose between private and sharing options.' },
+    { question: 'How to book deluxe houseboat in Alleppey?', answer: 'You can book easily by filling out the form on this page, or by contacting us directly via WhatsApp or phone. We require a small advance payment to confirm the booking.' },
+    { question: 'Is deluxe houseboat suitable for families with children?', answer: 'Yes, absolutely! Our houseboats are very safe for families and children. We provide safety precautions and life jackets. The crew is always there to assist.' },
+    { question: 'What is the best time to book deluxe houseboat in Alleppey?', answer: 'The best time is from September to March when the weather is pleasant. However, backwater cruising is available year-round.' },
+    { question: 'What amenities are provided in deluxe houseboats?', answer: 'Amenities include air-conditioned bedrooms, attached bathrooms, a viewing deck, a dining area, a television, and a music system.' },
+    { question: 'Can I customize my deluxe houseboat itinerary?', answer: 'Yes, we can customize your itinerary based on your preferences. You can choose specific routes or request special arrangements like a candlelight dinner.' },
+    { question: 'What is the cancellation policy for deluxe houseboat booking?', answer: 'Cancellations made 15 days prior to the journey receive a full refund (minus processing fees). Cancellations within 15 days may incur charges. Please refer to our detailed policy.' }
   ];
 
   return (
@@ -354,6 +390,39 @@ Please share availability and details.`;
                 <div className="review-badge">
                   {review.badgeIcon} {review.badge}
                 </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="faq-section">
+          <div className="faq-header">
+            <h3 className="faq-cursive">Frequently Asked Questions</h3>
+            <h2 className="faq-title">Deluxe Houseboat Booking</h2>
+            <p className="faq-subtitle">Get answers to common questions about deluxe houseboat booking in Alleppey, Kerala.</p>
+          </div>
+          
+          <div className="faq-list">
+            {faqs.map((faq, index) => (
+              <div key={index} className={`faq-item ${openFaq === index ? 'open' : ''}`}>
+                <button 
+                  className="faq-question" 
+                  onClick={() => toggleFaq(index)}
+                  aria-expanded={openFaq === index}
+                >
+                  {faq.question}
+                  <span className="faq-icon">
+                    {openFaq === index ? <Minus size={18} /> : <Plus size={18} />}
+                  </span>
+                </button>
+                {openFaq === index && (
+                  <div className="faq-answer">
+                    <div className="faq-answer-content">
+                      {faq.answer}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>
