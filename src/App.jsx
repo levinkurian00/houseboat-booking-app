@@ -396,19 +396,22 @@ Please share availability and details.`;
         </section>
 
         {/* Reviews Section */}
-        <section className="reviews-section" style={{ minHeight: '500px' }}>
-          <div className="elfsight-app-88b398f6-613d-4ac2-821e-06e6df158390" data-elfsight-app-lazy="true"></div>
+        <section className="reviews-section">
+          <div className="reviews-container" style={{ minHeight: '500px' }}>
+            <div className="elfsight-app-88b398f6-613d-4ac2-821e-06e6df158390" data-elfsight-app-lazy="true"></div>
+          </div>
         </section>
 
         {/* FAQ Section */}
         <section className="faq-section">
-          <div className="faq-header">
-            <h3 className="faq-cursive">Frequently Asked Questions</h3>
-            <h2 className="faq-title">{formData.category || 'Deluxe Houseboat'} Booking</h2>
-            <p className="faq-subtitle">Get answers to common questions about {formData.category ? formData.category.toLowerCase() : 'deluxe houseboat'} booking in Alleppey, Kerala.</p>
-          </div>
-          
-          <div className="faq-list">
+          <div className="faq-container">
+            <div className="faq-header">
+              <h3 className="faq-cursive">Frequently Asked Questions</h3>
+              <h2 className="faq-title">{formData.category || 'Deluxe Houseboat'} Booking</h2>
+              <p className="faq-subtitle">Get answers to common questions about {formData.category ? formData.category.toLowerCase() : 'deluxe houseboat'} booking in Alleppey, Kerala.</p>
+            </div>
+            
+            <div className="faq-list">
             {currentFaqs.map((faq, index) => (
               <div key={index} className={`faq-item ${openFaq === index ? 'open' : ''}`}>
                 <button 
@@ -430,6 +433,7 @@ Please share availability and details.`;
                 )}
               </div>
             ))}
+          </div>
           </div>
         </section>
       </div>

@@ -288,7 +288,7 @@ body {
   flex-direction: column;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 4rem 2rem;
+  padding: 5rem 2rem;
   gap: 2rem;
 }
 
@@ -507,9 +507,15 @@ body {
 
 /* Reviews Section */
 .reviews-section {
-  padding: 4rem 2rem;
+  padding: 5rem 0;
+  background-color: var(--white);
+  width: 100%;
+}
+
+.reviews-container {
   max-width: 1280px;
   margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .reviews-header {
@@ -639,9 +645,15 @@ body {
 
 /* FAQ Section */
 .faq-section {
-  padding: 4rem 2rem;
+  padding: 5rem 0;
+  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+  width: 100%;
+}
+
+.faq-container {
   max-width: 850px;
   margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .faq-header {
