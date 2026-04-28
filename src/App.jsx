@@ -17,7 +17,10 @@ import {
   Repeat,
   Plus,
   Minus,
-  Home
+  Home,
+  Check,
+  X,
+  ArrowRight
 } from 'lucide-react';
 
 function App() {
@@ -434,6 +437,121 @@ Please share availability and details.`;
               </div>
             ))}
           </div>
+          </div>
+        </section>
+
+        {/* Comparison Section */}
+        <section className="comparison-section">
+          <div className="comparison-container">
+            <div className="comparison-header">
+              <h3 className="comparison-cursive">Choose Wisely</h3>
+              <h2 className="comparison-title">Compare Houseboat Categories</h2>
+              <p className="comparison-subtitle">See how our deluxe houseboats compare with premium and luxury options to find the perfect fit for your needs and preferences</p>
+            </div>
+            
+            <div className="table-responsive">
+              <table className="comparison-table">
+                <thead>
+                  <tr>
+                    <th className="th-features">Features</th>
+                    <th className="th-deluxe">
+                      <div className="th-title">Deluxe</div>
+                      <div className="th-subtitle">Best Value</div>
+                    </th>
+                    <th className="th-premium">Premium</th>
+                    <th className="th-luxury">Luxury</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="td-feature">Value Category</td>
+                    <td className="td-deluxe td-highlight-text">Best Value</td>
+                    <td>Premium</td>
+                    <td>Luxury</td>
+                  </tr>
+                  <tr>
+                    <td className="td-feature">Air Conditioning</td>
+                    <td className="td-deluxe"><Check size={18} className="text-green" /></td>
+                    <td><Check size={18} className="text-green" /></td>
+                    <td><Check size={18} className="text-green" /></td>
+                  </tr>
+                  <tr>
+                    <td className="td-feature">Attached Bathroom</td>
+                    <td className="td-deluxe"><Check size={18} className="text-green" /></td>
+                    <td><Check size={18} className="text-green" /></td>
+                    <td><Check size={18} className="text-green" /></td>
+                  </tr>
+                  <tr>
+                    <td className="td-feature">All Meals Included</td>
+                    <td className="td-deluxe"><Check size={18} className="text-green" /></td>
+                    <td><Check size={18} className="text-green" /></td>
+                    <td><Check size={18} className="text-green" /></td>
+                  </tr>
+                  <tr>
+                    <td className="td-feature">Professional Crew</td>
+                    <td className="td-deluxe">3 Members</td>
+                    <td>4 Members</td>
+                    <td>5 Members</td>
+                  </tr>
+                  <tr>
+                    <td className="td-feature">Wi-Fi Internet</td>
+                    <td className="td-deluxe"><Check size={18} className="text-green" /></td>
+                    <td><Check size={18} className="text-green" /></td>
+                    <td><Check size={18} className="text-green" /></td>
+                  </tr>
+                  <tr>
+                    <td className="td-feature">Upper Deck Seating</td>
+                    <td className="td-deluxe">Basic</td>
+                    <td>Enhanced</td>
+                    <td>Premium</td>
+                  </tr>
+                  <tr>
+                    <td className="td-feature">Room Service</td>
+                    <td className="td-deluxe"><X size={18} className="text-gray" /></td>
+                    <td><Check size={18} className="text-green" /></td>
+                    <td><Check size={18} className="text-green" /></td>
+                  </tr>
+                  <tr>
+                    <td className="td-feature">Spa Services</td>
+                    <td className="td-deluxe"><X size={18} className="text-gray" /></td>
+                    <td>Optional</td>
+                    <td><Check size={18} className="text-green" /></td>
+                  </tr>
+                  <tr>
+                    <td className="td-feature">Private Butler</td>
+                    <td className="td-deluxe"><X size={18} className="text-gray" /></td>
+                    <td><X size={18} className="text-gray" /></td>
+                    <td><Check size={18} className="text-green" /></td>
+                  </tr>
+                  <tr className="tr-best-for">
+                    <td className="td-feature">Best For</td>
+                    <td className="td-deluxe td-highlight-text">Families &amp; Budget Travelers</td>
+                    <td className="text-indigo">Special Occasions</td>
+                    <td className="text-purple">Luxury Seekers</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td></td>
+                    <td className="td-deluxe">
+                      <button className="btn-book-deluxe" onClick={() => handleCategorySelect('Deluxe Houseboat')}>
+                        <Calendar size={16} /> Book Deluxe Now
+                      </button>
+                    </td>
+                    <td>
+                      <button className="btn-view-premium" onClick={() => handleCategorySelect('Premium Houseboat')}>
+                        <ArrowRight size={16} /> View Premium
+                      </button>
+                    </td>
+                    <td>
+                      <button className="btn-explore-luxury" onClick={() => handleCategorySelect('Luxury Houseboat')}>
+                        <Star size={16} /> Explore Luxury
+                      </button>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
           </div>
         </section>
       </div>
