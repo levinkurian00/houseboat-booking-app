@@ -89,10 +89,10 @@ Please share availability and details.`;
   };
 
   const themeColors = {
-    '': { main: '#3b48ff', hover: '#323ee6', heroBg: 'rgba(0,0,0,0.4)', blendMode: 'overlay' },
-    'Deluxe Houseboat': { main: '#3b48ff', hover: '#323ee6', heroBg: '#3b48ff', blendMode: 'multiply' },
-    'Premium Houseboat': { main: '#059669', hover: '#047857', heroBg: '#059669', blendMode: 'multiply' },
-    'Luxury Houseboat': { main: '#d97706', hover: '#b45309', heroBg: '#d97706', blendMode: 'multiply' }
+    '': { main: '#3b48ff', hover: '#323ee6', heroBg: 'rgba(0,0,0,0.4)', bgImage: "url('/hero-image.png')", blendMode: 'overlay' },
+    'Deluxe Houseboat': { main: '#3b48ff', hover: '#323ee6', heroBg: '#3b48ff', bgImage: 'none', blendMode: 'normal' },
+    'Premium Houseboat': { main: '#059669', hover: '#047857', heroBg: '#059669', bgImage: 'none', blendMode: 'normal' },
+    'Luxury Houseboat': { main: '#d97706', hover: '#b45309', heroBg: '#d97706', bgImage: 'none', blendMode: 'normal' }
   };
 
   const currentTheme = themeColors[formData.category] || themeColors[''];
@@ -100,6 +100,7 @@ Please share availability and details.`;
     '--primary': currentTheme.main,
     '--primary-hover': currentTheme.hover,
     '--hero-bg-color': currentTheme.heroBg,
+    '--hero-bg-image': currentTheme.bgImage,
     '--hero-blend-mode': currentTheme.blendMode,
   };
 
