@@ -707,10 +707,6 @@ Please share availability and details.`;
 
       {/* Sticky Bottom CTA for Mobile */}
       <div className="mobile-sticky-cta">
-        <div className="mobile-cta-price">
-          <span className="cta-label">Starts from</span>
-          <span className="cta-amount">₹8,000</span>
-        </div>
         <button 
           className="mobile-cta-btn" 
           onClick={() => {

@@ -1174,13 +1174,14 @@ body {
 }
 
 .mobile-cta-btn {
+  width: 100%;
   background-color: var(--accent);
   color: var(--white);
   border: none;
-  padding: 0.75rem 2rem;
+  padding: 1rem 2rem;
   border-radius: 9999px;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.1rem;
   box-shadow: 0 4px 6px rgba(245, 158, 11, 0.3);
 }
 
