@@ -297,7 +297,7 @@ Please share availability and details.`;
             {/* Left Column */}
             <motion.div 
               className="hero-content"
-              initial={{ opacity: 0, x: -30 }}
+              initial={{ opacity: 0, x: -15 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
@@ -453,7 +453,7 @@ Please share availability and details.`;
           <motion.div 
             className="reviews-container" 
             style={{ minHeight: '500px' }}
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true, margin: "-50px" }}
@@ -467,7 +467,7 @@ Please share availability and details.`;
           <div className="faq-container">
             <motion.div 
               className="faq-header"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
@@ -482,7 +482,7 @@ Please share availability and details.`;
               <motion.div 
                 key={index} 
                 className={`faq-item ${openFaq === index ? 'open' : ''}`}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true, margin: "-20px" }}
@@ -515,7 +515,7 @@ Please share availability and details.`;
           <div className="comparison-container">
             <motion.div 
               className="comparison-header"
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
