@@ -21,7 +21,12 @@ import {
   Home,
   Check,
   X,
-  ArrowRight
+  ArrowRight,
+  Facebook,
+  Instagram,
+  Twitter,
+  Mail,
+  MapPin
 } from 'lucide-react';
 
 function App() {
@@ -280,16 +285,6 @@ Please share availability and details.`;
               transition={{ duration: 0.8, delay: 0.4 }}
             >
               <div className="booking-form-card">
-                <div className="form-banner">
-                  <div className="form-banner-text">
-                    🔥 Limited Availability: Book Now for Instant Confirmation!
-                  </div>
-                  <Clock size={16} />
-                </div>
-                <div className="form-stats">
-                  <span><span style={{color:'#fbbf24'}}>●</span> 26 people viewing this page now</span>
-                  <span>Only 7 boats left!</span>
-                </div>
                 
                 <div className="form-body">
                   <div className="form-header-inner">
@@ -605,6 +600,65 @@ Please share availability and details.`;
           </div>
         </section>
       </div>
+
+      {/* Footer Section */}
+      <footer className="app-footer">
+        <div className="footer-container">
+          <div className="footer-grid">
+            <div className="footer-brand">
+              <div className="footer-logo">
+                <span>bookyour</span>
+                <span>houseboat.com</span>
+              </div>
+              <p className="footer-desc">
+                Experience the magic of Alleppey backwaters with our premium houseboat booking service. Quality, safety, and unforgettable memories guaranteed.
+              </p>
+              <div className="footer-socials">
+                <a href="#" className="social-icon"><Facebook size={18} /></a>
+                <a href="#" className="social-icon"><Instagram size={18} /></a>
+                <a href="#" className="social-icon"><Twitter size={18} /></a>
+              </div>
+            </div>
+
+            <div className="footer-links">
+              <h3>Quick Links</h3>
+              <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Our Houseboats</a></li>
+                <li><a href="#">Special Packages</a></li>
+                <li><a href="#">Travel Guide</a></li>
+                <li><a href="#">FAQ</a></li>
+              </ul>
+            </div>
+
+            <div className="footer-contact">
+              <h3>Contact Info</h3>
+              <ul>
+                <li>
+                  <MapPin size={18} className="contact-icon" />
+                  <span>Finishing Point, Punnamada, Alappuzha, Kerala 688013</span>
+                </li>
+                <li>
+                  <Phone size={18} className="contact-icon" />
+                  <span>+91 79076 89772</span>
+                </li>
+                <li>
+                  <Mail size={18} className="contact-icon" />
+                  <span>bookings@bookyourhouseboat.com</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="footer-bottom">
+            <p>&copy; {new Date().getFullYear()} bookyourhouseboat.com. All rights reserved.</p>
+            <div className="footer-legal">
+              <a href="#">Privacy Policy</a>
+              <a href="#">Terms of Service</a>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
