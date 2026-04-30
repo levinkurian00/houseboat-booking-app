@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
+  Menu,
   Phone, 
   MessageCircle, 
   ShieldCheck, 
@@ -37,6 +38,7 @@ function App() {
   });
 
   const [openFaq, setOpenFaq] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const toggleFaq = (index) => {
     setOpenFaq(openFaq === index ? null : index);
@@ -246,9 +248,47 @@ Please share availability and details.`;
           <div className="header-actions">
             <a href="#" className="btn-outline"><MessageSquare size={16} /> Get Quote</a>
             <a href="tel:+917907689772" className="btn-solid"><Phone size={16} /> Call Now</a>
+            <button className="mobile-menu-btn" onClick={() => setIsMobileMenuOpen(true)}>
+              <Menu size={24} />
+            </button>
           </div>
         </header>
       </motion.div>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div 
+            className="mobile-menu-overlay"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsMobileMenuOpen(false)}
+          >
+            <motion.div 
+              className="mobile-menu-content"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'tween', duration: 0.3 }}
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="mobile-menu-header">
+                <span className="mobile-menu-title">Menu</span>
+                <button className="mobile-menu-close" onClick={() => setIsMobileMenuOpen(false)}>
+                  <X size={24} />
+                </button>
+              </div>
+              <div className="mobile-menu-links">
+                <a href="#" onClick={(e) => { e.preventDefault(); handleCategorySelect('Deluxe Houseboat'); setIsMobileMenuOpen(false); }}>Deluxe Houseboats</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); handleCategorySelect('Premium Houseboat'); setIsMobileMenuOpen(false); }}>Premium Houseboats</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); handleCategorySelect('Luxury Houseboat'); setIsMobileMenuOpen(false); }}>Luxury Houseboats</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); }}>Travel Guide</a>
+                <a href="#" onClick={(e) => { e.preventDefault(); setIsMobileMenuOpen(false); }}>Contact Us</a>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <div className="app-content">
         {/* Hero Section */}
@@ -492,6 +532,7 @@ Please share availability and details.`;
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true }}
             >
+              <div className="mobile-swipe-hint">← Swipe to compare →</div>
               <table className="comparison-table">
                 <thead>
                   <tr>
@@ -662,6 +703,22 @@ Please share availability and details.`;
           </div>
         </div>
       </footer>
+
+      {/* Sticky Bottom CTA for Mobile */}
+      <div className="mobile-sticky-cta">
+        <div className="mobile-cta-price">
+          <span className="cta-label">Starts from</span>
+          <span className="cta-amount">₹8,000</span>
+        </div>
+        <button 
+          className="mobile-cta-btn" 
+          onClick={() => {
+            document.getElementById('booking-form')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }}
+        >
+          Book Now
+        </button>
+      </div>
     </div>
   );
 }
