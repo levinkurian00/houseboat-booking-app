@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 import { 
   Phone, 
   MessageCircle, 
@@ -182,7 +183,12 @@ Please share availability and details.`;
 
   return (
     <div style={themeStyles}>
-      <div className="header-wrapper">
+      <motion.div 
+        className="header-wrapper"
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
         {/* Top Bar */}
         <div className="top-bar">
           <div className="top-bar-left">
@@ -240,14 +246,19 @@ Please share availability and details.`;
             <a href="tel:+917907689772" className="btn-solid"><Phone size={16} /> Call Now</a>
           </div>
         </header>
-      </div>
+      </motion.div>
 
       <div className="app-content">
         {/* Hero Section */}
         <section className="hero-section">
           <div className="hero-container">
             {/* Left Column */}
-            <div className="hero-content">
+            <motion.div 
+              className="hero-content"
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
               <div className="breadcrumbs">
                 Home &gt; Houseboat Booking {formData.category ? `> ` : ''}<strong>{formData.category ? `${formData.category}s` : ''}</strong>
               </div>
@@ -258,10 +269,16 @@ Please share availability and details.`;
               
               <h2 className="hero-cursive">{formData.category ? `${formData.category}s` : 'Alleppey Houseboats'}</h2>
               <h1 className="hero-title">Alleppey Backwater<br/>Experience</h1>
-            </div>
+            </motion.div>
 
             {/* Right Column - Form */}
-            <div className="hero-form-wrapper" id="booking-form">
+            <motion.div 
+              className="hero-form-wrapper" 
+              id="booking-form"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
               <div className="booking-form-card">
                 <div className="form-banner">
                   <div className="form-banner-text">
@@ -395,29 +412,49 @@ Please share availability and details.`;
                   </form>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
         {/* Reviews Section */}
         <section className="reviews-section">
-          <div className="reviews-container" style={{ minHeight: '500px' }}>
+          <motion.div 
+            className="reviews-container" 
+            style={{ minHeight: '500px' }}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true, margin: "-50px" }}
+          >
             <div className="elfsight-app-88b398f6-613d-4ac2-821e-06e6df158390" data-elfsight-app-lazy="true"></div>
-          </div>
+          </motion.div>
         </section>
 
         {/* FAQ Section */}
         <section className="faq-section">
           <div className="faq-container">
-            <div className="faq-header">
+            <motion.div 
+              className="faq-header"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
               <h3 className="faq-cursive">Frequently Asked Questions</h3>
               <h2 className="faq-title">{formData.category || 'Deluxe Houseboat'} Booking</h2>
               <p className="faq-subtitle">Get answers to common questions about {formData.category ? formData.category.toLowerCase() : 'deluxe houseboat'} booking in Alleppey, Kerala.</p>
-            </div>
+            </motion.div>
             
             <div className="faq-list">
             {currentFaqs.map((faq, index) => (
-              <div key={index} className={`faq-item ${openFaq === index ? 'open' : ''}`}>
+              <motion.div 
+                key={index} 
+                className={`faq-item ${openFaq === index ? 'open' : ''}`}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-20px" }}
+              >
                 <button 
                   className="faq-question" 
                   onClick={() => toggleFaq(index)}
@@ -435,7 +472,7 @@ Please share availability and details.`;
                     </div>
                   </div>
                 )}
-              </div>
+              </motion.div>
             ))}
           </div>
           </div>
@@ -444,13 +481,25 @@ Please share availability and details.`;
         {/* Comparison Section */}
         <section className="comparison-section">
           <div className="comparison-container">
-            <div className="comparison-header">
+            <motion.div 
+              className="comparison-header"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
               <h3 className="comparison-cursive">Choose Wisely</h3>
               <h2 className="comparison-title">Compare Houseboat Categories</h2>
               <p className="comparison-subtitle">See how our deluxe houseboats compare with premium and luxury options to find the perfect fit for your needs and preferences</p>
-            </div>
+            </motion.div>
             
-            <div className="table-responsive">
+            <motion.div 
+              className="table-responsive"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
               <table className="comparison-table">
                 <thead>
                   <tr>
@@ -552,7 +601,7 @@ Please share availability and details.`;
                   </tr>
                 </tfoot>
               </table>
-            </div>
+            </motion.div>
           </div>
         </section>
       </div>
