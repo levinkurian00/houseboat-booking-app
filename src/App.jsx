@@ -28,6 +28,13 @@ import {
 } from 'lucide-react';
 
 function App() {
+  const servicesList = [
+    "Group Cruises", "Private Tours", "Private Cruises", 
+    "Group Tours", "Guided Tours", "Land Tours", 
+    "1 Day Trip", "Day Cruise", "Premium Houseboats", 
+    "Motor Boats", "Speed Boats"
+  ];
+
   const [formData, setFormData] = useState({
     name: '',
     whatsapp: '',
@@ -635,6 +642,37 @@ Please share availability and details.`;
                   </tr>
                 </tfoot>
               </table>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section className="services-section">
+          <div className="services-container">
+            <motion.div 
+              className="services-header"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="services-title">Our Services</h2>
+              <p className="services-subtitle">Everything you need for the perfect Alleppey experience</p>
+            </motion.div>
+            
+            <motion.div 
+              className="services-grid"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              viewport={{ once: true }}
+            >
+              {servicesList.map((service, index) => (
+                <div key={index} className="service-pill">
+                  <CheckCircle2 size={16} className="service-icon" />
+                  <span>{service}</span>
+                </div>
+              ))}
             </motion.div>
           </div>
         </section>
