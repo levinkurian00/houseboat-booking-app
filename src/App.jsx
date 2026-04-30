@@ -308,14 +308,6 @@ Please share availability and details.`;
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="breadcrumbs">
-                Home &gt; Houseboat Booking {formData.category ? `> ` : ''}<strong>{formData.category ? `${formData.category}s` : ''}</strong>
-              </div>
-              
-              <div className="badge-outline">
-                <Globe size={14} /> {formData.category ? `${formData.category.split(' ')[0]} Category` : 'All Categories'}
-              </div>
-              
               <h2 className="hero-cursive">{formData.category ? `${formData.category}s` : 'Alleppey Houseboats'}</h2>
               <h1 className="hero-title">Alleppey Backwater<br/>Experience</h1>
             </motion.div>
