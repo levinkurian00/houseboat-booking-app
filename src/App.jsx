@@ -327,7 +327,7 @@ Please share availability and details.`;
                   <div className="form-header-inner">
                     <h2>Book Your Dream Houseboat</h2>
                     <div className="form-rating-row">
-                      <Star size={14} fill="#fbbf24" color="#fbbf24" /> 4.8 (1,250+ reviews)
+                      <Star size={14} fill="#fbbf24" color="#fbbf24" /> 4.8 (70+ reviews)
                       &nbsp;&nbsp;•&nbsp;&nbsp;
                       <span style={{color: '#10b981', display:'flex', alignItems:'center', gap:'0.25rem'}}>
                         <CheckCircle2 size={14} /> Instant Confirmation
