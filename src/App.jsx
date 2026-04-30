@@ -380,6 +380,7 @@ Please share availability and details.`;
                           className="form-input"
                           value={formData.date}
                           onChange={handleChange}
+                          min={new Date(new Date().getTime() - new Date().getTimezoneOffset() * 60000).toISOString().split('T')[0]}
                           required 
                         />
                       </div>
