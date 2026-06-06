@@ -111,9 +111,26 @@ function Gallery() {
               .gallery-scroll-container::-webkit-scrollbar {
                 display: none;
               }
+              .gallery-item {
+                flex: 0 0 calc(33.333% - 1rem);
+                scroll-snap-align: start;
+                border-radius: 12px;
+                overflow: hidden;
+                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                aspect-ratio: 4/3;
+                position: relative;
+              }
+              @media (max-width: 1024px) {
+                .gallery-item {
+                  flex: 0 0 calc(50% - 0.75rem);
+                }
+              }
               @media (max-width: 768px) {
                 .gallery-nav-btn {
                   display: none !important;
+                }
+                .gallery-item {
+                  flex: 0 0 calc(85% - 1rem);
                 }
               }
             `}} />
@@ -121,20 +138,11 @@ function Gallery() {
             {photos.map((photo, index) => (
               <motion.div 
                 key={photo.id}
+                className="gallery-item"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: Math.min(index * 0.1, 0.5) }}
                 viewport={{ once: true }}
-                style={{
-                  minWidth: '300px',
-                  flexShrink: 0,
-                  scrollSnapAlign: 'start',
-                  borderRadius: '12px',
-                  overflow: 'hidden',
-                  boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-                  aspectRatio: '4/3',
-                  position: 'relative'
-                }}
               >
                 <img 
                   src={photo.url} 
