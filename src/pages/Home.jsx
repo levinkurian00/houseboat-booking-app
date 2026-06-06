@@ -219,8 +219,8 @@ Please share availability and details.`;
         <header className="app-header">
           <a href="/" className="header-logo">
             <div className="header-logo-text">
-              <span>bookyour</span>
-              <span>houseboat.com</span>
+              <span>Chittadil</span>
+              <span>Houseboats</span>
             </div>
           </a>
           
@@ -680,8 +680,8 @@ Please share availability and details.`;
           <div className="footer-grid">
             <div className="footer-brand">
               <div className="footer-logo">
-                <span>bookyour</span>
-                <span>houseboat.com</span>
+                <span>Chittadil</span>
+                <span>Houseboats</span>
               </div>
               <p className="footer-desc">
                 Experience the magic of Alleppey backwaters with our premium houseboat booking service. Quality, safety, and unforgettable memories guaranteed.
@@ -723,14 +723,14 @@ Please share availability and details.`;
                 </li>
                 <li>
                   <Mail size={18} className="contact-icon" />
-                  <span>bookings@bookyourhouseboat.com</span>
+                  <span>bookings@chittadilhouseboats.com</span>
                 </li>
               </ul>
             </div>
           </div>
 
           <div className="footer-bottom">
-            <p>&copy; {new Date().getFullYear()} bookyourhouseboat.com. All rights reserved.</p>
+            <p>&copy; {new Date().getFullYear()} Chittadil Houseboats. All rights reserved.</p>
             <div className="footer-legal">
               <a href="#">Privacy Policy</a>
               <a href="#">Terms of Service</a>
